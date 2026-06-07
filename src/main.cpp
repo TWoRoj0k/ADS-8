@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
-#include <iostream>
-#include <string>
 #include <sys/stat.h>
+#include <string>
+#include <iostream>
 #include "bst.h"
 
 void makeTree(BST<std::string>& tree, const char* filename);
