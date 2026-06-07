@@ -69,8 +69,9 @@ class BST {
     }
 
     int depth() const {
-        return getDepth(root);
-    }
+    if (root == nullptr) return 0;
+    return getDepth(root) - 1;
+}
 
     int search(T value) const {
         return searchNode(root, value);
