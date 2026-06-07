@@ -4,6 +4,7 @@
 
 #include <string>
 #include <algorithm>
+#include <functional>
 
 template <typename T>
 class BST {
@@ -13,7 +14,7 @@ class BST {
         int count;
         Node* left;
         Node* right;
-        Node(T val) : data(val), count(1), left(nullptr), right(nullptr) {}
+        explicit Node(T val) : data(val), count(1), left(nullptr), right(nullptr) {}
     };
 
     Node* root;
@@ -49,7 +50,7 @@ class BST {
         delete node;
     }
 
-    void inorderTraversal(Node* node, void (*func)(T, int)) const {
+    void inorderTraversal(Node* node, const std::function<void(T, int)>& func) const {
         if (node == nullptr) return;
         inorderTraversal(node->left, func);
         func(node->data, node->count);
@@ -75,7 +76,7 @@ class BST {
         return searchNode(root, value);
     }
 
-    void inorder(void (*func)(T, int)) const {
+    void inorder(const std::function<void(T, int)>& func) const {
         inorderTraversal(root, func);
     }
 };
