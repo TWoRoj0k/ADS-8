@@ -49,6 +49,13 @@ class BST {
         delete node;
     }
 
+    void inorderTraversal(Node* node, void (*func)(T, int)) const {
+        if (node == nullptr) return;
+        inorderTraversal(node->left, func);
+        func(node->data, node->count);
+        inorderTraversal(node->right, func);
+    }
+
  public:
     BST() : root(nullptr) {}
 
@@ -66,6 +73,10 @@ class BST {
 
     int search(T value) const {
         return searchNode(root, value);
+    }
+
+    void inorder(void (*func)(T, int)) const {
+        inorderTraversal(root, func);
     }
 };
 
